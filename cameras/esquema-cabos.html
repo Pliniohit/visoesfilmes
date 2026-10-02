@@ -66,10 +66,12 @@ footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
 <div class="wrap">
   <div class="eyebrow">Visões Filmes · casa · 02/10/2026</div>
   <h1>Cabos das Câmeras</h1>
-  <p class="lede">Roteador Vivo e switch PoE ficam no rack da TV. Dois trechos de cabo de rede saem dali. Mede com trena, preenche os campos, a página calcula o que comprar. Os valores ficam salvos neste navegador.</p>
+  <p class="lede">Roteador Vivo e switch PoE ficam no rack da TV, na parede do altar. As duas câmeras ficam nessa mesma parede. Os campos já vêm com as medidas da planta; ajusta se a trena disser outra coisa. Os valores ficam salvos neste navegador.</p>
 
   <section>
-    <h2>Planta esquemática</h2>
+    <h2>Planta</h2>
+    <div class="panel plan" style="padding:8px"><img src="planta-rascunho.png" alt="Planta da casa com câmeras e cabos" style="width:100%;height:auto;display:block;border-radius:6px"></div>
+    <h2 style="margin-top:18px">Esquema dos trechos</h2>
     <div class="panel plan">
       <svg viewBox="0 0 760 420" role="img" aria-label="Planta esquemática do apartamento com roteador, switch, câmeras e trechos de cabo">
         <defs>
@@ -148,20 +150,20 @@ footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
         <header><span class="tag cable">T1</span><strong>Switch → VIP 3830 B</strong><span class="tag">sala</span></header>
         <div class="path">Sai do rack, corre pelo rodapé ou atrás do rack até a quina da parede da janela, sobe até o ponto da câmera no alto.</div>
         <div class="fields">
-          <label>rack → quina (m)<input type="number" id="t1a" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
-          <label>subida até a câmera (m)<input type="number" id="t1b" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
+          <label>rack → quina (m)<input type="number" id="t1a" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="0.5"></label>
+          <label>subida até a câmera (m)<input type="number" id="t1b" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="1.7"></label>
         </div>
         <div class="result"><span>Caminho <b id="t1sum">—</b> · com folga <b id="t1need">—</b></span><span>Comprar <b class="buy" id="t1buy">—</b></span></div>
       </div>
 
       <div class="panel">
-        <header><span class="tag cable">T2</span><strong>Switch → VIP 1430 B</strong><span class="tag">corredor</span></header>
-        <div class="path">Sai do rack, rodapé da sala até a passagem pro corredor, segue pelo corredor até o ponto, sobe até a câmera. É o trecho do fio longo.</div>
+        <header><span class="tag cable">T2</span><strong>Switch → VIP 1430 B</strong><span class="tag">boca do corredor</span></header>
+        <div class="path">Sai do rack, desce pelo rodapé da parede do altar até a boca do corredor, sobe até a câmera, que fica na sala, em cima da abertura, olhando pra dentro do corredor. Nenhum cabo entra no corredor.</div>
         <div class="fields">
-          <label>rack → passagem (m)<input type="number" id="t2a" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
-          <label>passagem → ponto (m)<input type="number" id="t2b" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
-          <label>subida até a câmera (m)<input type="number" id="t2c" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
-          <label>fio longo que já tenho (m)<input type="number" id="t2have" min="0" step="0.5" inputmode="decimal" placeholder="0,0"></label>
+          <label>rack → boca do corredor (m)<input type="number" id="t2a" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="2.9"></label>
+          <label>dentro do corredor (m)<input type="number" id="t2b" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="0"></label>
+          <label>subida até a câmera (m)<input type="number" id="t2c" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="1.7"></label>
+          <label>fio longo que já tenho, se servir (m)<input type="number" id="t2have" min="0" step="0.5" inputmode="decimal" placeholder="0,0"></label>
         </div>
         <div class="result"><span>Caminho <b id="t2sum">—</b> · com folga <b id="t2need">—</b></span><span class="status" id="t2status">preencha os campos</span></div>
       </div>
@@ -198,7 +200,7 @@ footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
     </div>
   </section>
 
-  <footer>Trechos T1 e T2 são propostas a partir do vídeo do apartamento. Microcartão SD dispensado: gravação pelo desktop (OBS ou app próprio).</footer>
+  <footer>Planta: rascunho 9 de 02/10/2026, fundo da casa ainda como hipótese. Microcartão SD dispensado: gravação pelo desktop (OBS ou app próprio).</footer>
 </div>
 
 <script>
