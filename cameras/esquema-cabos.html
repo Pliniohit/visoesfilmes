@@ -1,0 +1,248 @@
+<title>Cabos das Câmeras</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna de leitura (planta no alto, trechos abaixo, totais fixos no fim). Dark-first. */
+:root{
+  --bg:#101418; --panel:#171d24; --line:#2a333d; --fg:#e6e9ec; --muted:#8e9aa6;
+  --cable:#f2b63c; --cable-dim:#7a5c1e; --cam:#5fd3e0; --wifi:#b48ef5; --ok:#58c98a; --bad:#f06c6c;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){ :root:not([data-theme="dark"]){
+  --bg:#f4f1ea; --panel:#ffffff; --line:#d9d3c7; --fg:#1b1f23; --muted:#5f6a75;
+  --cable:#b7801a; --cable-dim:#e3cf9c; --cam:#1b8a98; --wifi:#6b45c7; --ok:#1f8a4f; --bad:#c23b3b; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#f4f1ea; --panel:#ffffff; --line:#d9d3c7; --fg:#1b1f23; --muted:#5f6a75;
+  --cable:#b7801a; --cable-dim:#e3cf9c; --cam:#1b8a98; --wifi:#6b45c7; --ok:#1f8a4f; --bad:#c23b3b; color-scheme:light }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-block:28px 48px;padding-inline:16px}
+h1,h2{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0}
+h1{font-size:2.1rem;line-height:1.1}
+h2{font-size:1.35rem;margin-bottom:10px}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.lede{color:var(--muted);max-width:60ch;margin-top:8px}
+section{margin-top:34px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.plan{overflow-x:auto}
+.plan svg{display:block;width:100%;max-width:100%;height:auto;min-width:520px}
+.legend{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:10px;font-size:.85rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:22px;height:0;border-top:3px solid var(--cable);vertical-align:middle;margin-right:8px}
+.legend .cam::before{border-top-color:var(--cam)}
+.legend .wifi::before{border-top-style:dashed;border-top-color:var(--wifi)}
+.legend .fixed::before{border-top-color:var(--muted);width:10px}
+
+.trecho{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+.trecho .panel{display:grid;gap:10px}
+.trecho header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:.78rem;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tag.cable{border-color:var(--cable);color:var(--cable)}
+.tag.wifi{border-color:var(--wifi);color:var(--wifi)}
+.path{color:var(--muted);font-size:.9rem}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+label{display:grid;gap:4px;font-size:.8rem;color:var(--muted)}
+input[type=number]{font-family:var(--mono);font-size:1rem;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:100%;min-width:0}
+input[type=number]:focus{outline:2px solid var(--cable);outline-offset:1px}
+.result{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px dashed var(--line);padding-top:10px;font-variant-numeric:tabular-nums}
+.result b{font-family:var(--mono);font-weight:500}
+.result .buy{color:var(--cable)}
+.note{font-size:.85rem;color:var(--muted)}
+.status{font-family:var(--mono);font-size:.85rem}
+.status.ok{color:var(--ok)}.status.bad{color:var(--bad)}
+
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
+tfoot td{font-weight:600}
+.rule{font-size:.85rem;color:var(--muted);margin-top:10px}
+footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){ input{transition:outline-color .15s} }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Visões Filmes · casa · 02/10/2026</div>
+  <h1>Cabos das Câmeras</h1>
+  <p class="lede">Roteador Vivo e switch PoE ficam no rack da TV. Dois trechos de cabo de rede saem dali. Mede com trena, preenche os campos, a página calcula o que comprar. Os valores ficam salvos neste navegador.</p>
+
+  <section>
+    <h2>Planta esquemática</h2>
+    <div class="panel plan">
+      <svg viewBox="0 0 760 420" role="img" aria-label="Planta esquemática do apartamento com roteador, switch, câmeras e trechos de cabo">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--cam)"/></marker>
+        </defs>
+        <!-- cômodos -->
+        <g fill="none" stroke="var(--line)" stroke-width="2">
+          <rect x="30" y="40" width="330" height="340" rx="4"/>
+          <rect x="360" y="170" width="90" height="80" rx="2"/>
+          <rect x="450" y="40" width="280" height="130" rx="4"/>
+          <rect x="450" y="250" width="130" height="130" rx="4"/>
+          <rect x="580" y="250" width="150" height="130" rx="4"/>
+        </g>
+        <g font-family="var(--display)" font-size="17" fill="var(--fg)">
+          <text x="46" y="66">Sala</text>
+          <text x="466" y="66">Escritório</text>
+          <text x="466" y="276">Banheiro</text>
+          <text x="596" y="276">Quarto</text>
+          <text x="372" y="196" font-size="13" fill="var(--muted)">Corredor</text>
+        </g>
+        <!-- porta de entrada (parede esquerda) e janela/ar (parede direita da sala) -->
+        <rect x="26" y="150" width="8" height="60" fill="var(--fg)" opacity=".9"/>
+        <text x="40" y="186" font-family="var(--body)" font-size="12" fill="var(--muted)">porta de entrada</text>
+        <rect x="356" y="60" width="8" height="90" fill="var(--muted)" opacity=".6"/>
+        <text x="258" y="94" font-family="var(--body)" font-size="12" fill="var(--muted)" text-anchor="end">janela · ar-cond.</text>
+        <!-- rack da TV encostado na parede direita -->
+        <rect x="300" y="200" width="40" height="150" rx="3" fill="var(--panel)" stroke="var(--muted)"/>
+        <text x="320" y="285" font-family="var(--body)" font-size="11" fill="var(--muted)" text-anchor="middle" transform="rotate(-90 320 285)">rack da TV</text>
+        <!-- roteador + switch -->
+        <rect x="305" y="214" width="30" height="20" rx="2" fill="var(--fg)"/>
+        <text x="304" y="210" font-family="var(--mono)" font-size="11" fill="var(--fg)" text-anchor="end" transform="translate(-6 0)">roteador Vivo</text>
+        <rect x="305" y="242" width="30" height="20" rx="2" fill="var(--cable)"/>
+        <text x="298" y="256" font-family="var(--mono)" font-size="11" fill="var(--cable)" text-anchor="end">switch PoE</text>
+        <line x1="320" y1="234" x2="320" y2="242" stroke="var(--muted)" stroke-width="3"/>
+        <!-- T1: switch → câmera 4K no canto da janela, apontando para a porta -->
+        <path d="M335 252 L350 252 L350 52" fill="none" stroke="var(--cable)" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="350" cy="52" r="9" fill="var(--cam)"/>
+        <line x1="341" y1="60" x2="60" y2="180" stroke="var(--cam)" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arr)"/>
+        <text x="322" y="128" font-family="var(--mono)" font-size="12" fill="var(--cable)" text-anchor="end">T1</text>
+        <text x="330" y="40" font-family="var(--body)" font-size="12" fill="var(--cam)" text-anchor="end">VIP 3830 B · 4K</text>
+        <!-- T2: switch → sala → porta da sala → corredor -->
+        <path d="M335 258 L345 258 L345 372 L360 372 L440 372 L440 170 L410 170" fill="none" stroke="var(--cable)" stroke-width="3" stroke-linejoin="round" stroke-dasharray="10 5"/>
+        <circle cx="405" cy="178" r="9" fill="var(--cam)"/>
+        <line x1="405" y1="187" x2="405" y2="240" stroke="var(--cam)" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arr)"/>
+        <text x="392" y="392" font-family="var(--mono)" font-size="12" fill="var(--cable)">T2 · fio longo</text>
+        <text x="420" y="162" font-family="var(--body)" font-size="12" fill="var(--cam)">VIP 1430 B · 4 MP</text>
+        <!-- passagem sala→corredor -->
+        <rect x="356" y="230" width="8" height="20" fill="var(--bg)"/>
+        <!-- Wi-Fi -->
+        <circle cx="700" cy="70" r="8" fill="none" stroke="var(--wifi)" stroke-width="2" stroke-dasharray="3 3"/>
+        <text x="688" y="74" font-family="var(--body)" font-size="12" fill="var(--wifi)" text-anchor="end">PTZ Wi-Fi + fonte 12 V</text>
+        <circle cx="710" cy="365" r="8" fill="none" stroke="var(--wifi)" stroke-width="2" stroke-dasharray="3 3"/>
+        <text x="698" y="369" font-family="var(--body)" font-size="12" fill="var(--wifi)" text-anchor="end">Mini X5 · bateria</text>
+        <text x="30" y="408" font-family="var(--body)" font-size="11" fill="var(--muted)">sem escala · posições propostas, a confirmar no local</text>
+      </svg>
+    </div>
+    <div class="legend">
+      <span>cabo de rede (PoE)</span>
+      <span class="cam">campo de visão</span>
+      <span class="wifi">Wi-Fi 2,4 GHz, sem cabo</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Trechos</h2>
+    <p class="note">Mede o caminho real do cabo, não a linha reta: rodapé, subida na quina, contorno de porta. A página soma 1 m de folga em cada ponta e arredonda pro tamanho de loja.</p>
+    <div class="trecho">
+
+      <div class="panel">
+        <header><span class="tag">T0</span><strong>Roteador → switch PoE</strong><span class="tag">fixo</span></header>
+        <div class="path">Os dois no rack da TV, lado a lado. Patch cord pronto.</div>
+        <div class="result"><span>Comprar</span><b class="buy">patch cord 0,5 m</b></div>
+      </div>
+
+      <div class="panel">
+        <header><span class="tag cable">T1</span><strong>Switch → VIP 3830 B</strong><span class="tag">sala</span></header>
+        <div class="path">Sai do rack, corre pelo rodapé ou atrás do rack até a quina da parede da janela, sobe até o ponto da câmera no alto.</div>
+        <div class="fields">
+          <label>rack → quina (m)<input type="number" id="t1a" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
+          <label>subida até a câmera (m)<input type="number" id="t1b" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
+        </div>
+        <div class="result"><span>Caminho <b id="t1sum">—</b> · com folga <b id="t1need">—</b></span><span>Comprar <b class="buy" id="t1buy">—</b></span></div>
+      </div>
+
+      <div class="panel">
+        <header><span class="tag cable">T2</span><strong>Switch → VIP 1430 B</strong><span class="tag">corredor</span></header>
+        <div class="path">Sai do rack, rodapé da sala até a passagem pro corredor, segue pelo corredor até o ponto, sobe até a câmera. É o trecho do fio longo.</div>
+        <div class="fields">
+          <label>rack → passagem (m)<input type="number" id="t2a" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
+          <label>passagem → ponto (m)<input type="number" id="t2b" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
+          <label>subida até a câmera (m)<input type="number" id="t2c" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
+          <label>fio longo que já tenho (m)<input type="number" id="t2have" min="0" step="0.5" inputmode="decimal" placeholder="0,0"></label>
+        </div>
+        <div class="result"><span>Caminho <b id="t2sum">—</b> · com folga <b id="t2need">—</b></span><span class="status" id="t2status">preencha os campos</span></div>
+      </div>
+
+      <div class="panel">
+        <header><span class="tag wifi">Wi-Fi</span><strong>PTZ e Mini X5</strong></header>
+        <div class="path">Sem cabo de rede. A PTZ precisa de tomada perto do ponto (fonte 12 V 2 A, a que existe). A X5 carrega por USB e volta pro lugar.</div>
+        <div class="fields">
+          <label>PTZ: distância do ponto à tomada (m)<input type="number" id="ptz" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
+        </div>
+        <div class="result"><span>Cabo da fonte costuma ter 1,2 a 1,5 m</span><span class="status" id="ptzstatus">—</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Lista de compra</h2>
+    <div class="panel">
+      <table>
+        <thead><tr><th>Item</th><th>Detalhe</th><th style="text-align:right">Qtd</th></tr></thead>
+        <tbody>
+          <tr><td>Switch PoE</td><td>4 ou 5 portas, <b>IEEE 802.3af</b> ativo. Intelbras SF 500 PoE ou TP-Link TL-SF1005P.</td><td class="n">1</td></tr>
+          <tr><td>Patch cord</td><td>Cat5e ou Cat6, 0,5 m, roteador → switch</td><td class="n">1</td></tr>
+          <tr><td>Cabo T1</td><td id="buy-t1">preencha o trecho T1</td><td class="n">1</td></tr>
+          <tr><td>Cabo T2</td><td id="buy-t2">preencha o trecho T2</td><td class="n" id="buy-t2n">—</td></tr>
+          <tr><td>Canaleta adesiva</td><td id="buy-canaleta">soma dos caminhos horizontais, opcional</td><td class="n">—</td></tr>
+          <tr><td>Conector RJ45 + alicate</td><td>só se o fio longo vier sem ponta. Loja de informática crimpa na hora.</td><td class="n">0–2</td></tr>
+          <tr><td>Extensão elétrica</td><td id="buy-ext">se a PTZ ficar longe da tomada</td><td class="n" id="buy-extn">—</td></tr>
+        </tbody>
+        <tfoot><tr><td>Cabo de rede total</td><td id="tot-note">novo a comprar, sem contar o fio longo</td><td class="n" id="tot">—</td></tr></tfoot>
+      </table>
+      <p class="rule">Tamanhos de loja: 1 · 1,5 · 2 · 3 · 5 · 10 · 15 · 20 m. Limite PoE por trecho: 100 m, folga enorme pra apartamento. Cabo de rede e cabo elétrico não correm juntos na mesma canaleta.</p>
+    </div>
+  </section>
+
+  <footer>Trechos T1 e T2 são propostas a partir do vídeo do apartamento. Microcartão SD dispensado: gravação pelo desktop (OBS ou app próprio).</footer>
+</div>
+
+<script>
+(function(){
+  const SIZES=[1,1.5,2,3,5,10,15,20];
+  const ids=['t1a','t1b','t2a','t2b','t2c','t2have','ptz'];
+  const $=id=>document.getElementById(id);
+  const fmt=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+' m';
+  const val=id=>{const n=parseFloat(String($(id).value).replace(',','.'));return isNaN(n)?0:n;};
+  const commercial=m=>{for(const s of SIZES){if(s>=m)return s;}return Math.ceil(m/5)*5;};
+  const folga=m=>m*1.1+2; // 10% de curvas + 1 m em cada ponta
+
+  function load(){try{const s=JSON.parse(localStorage.getItem('cabos')||'{}');ids.forEach(i=>{if(s[i]!=null)$(i).value=s[i];});}catch(e){}}
+  function save(){try{const s={};ids.forEach(i=>s[i]=$(i).value);localStorage.setItem('cabos',JSON.stringify(s));}catch(e){}}
+
+  function calc(){
+    let total=0, horiz=0;
+    // T1
+    const a=val('t1a'), b=val('t1b'), s1=a+b;
+    if(s1>0){const n=folga(s1), c=commercial(n); total+=c; horiz+=a;
+      $('t1sum').textContent=fmt(s1); $('t1need').textContent=fmt(n); $('t1buy').textContent='cabo '+fmt(c);
+      $('buy-t1').textContent='Cat5e ou Cat6, pronto com RJ45, '+fmt(c)+' (caminho '+fmt(s1)+')';
+    } else { ['t1sum','t1need','t1buy'].forEach(i=>$(i).textContent='—'); $('buy-t1').textContent='preencha o trecho T1'; }
+    // T2
+    const x=val('t2a'), y=val('t2b'), z=val('t2c'), s2=x+y+z, have=val('t2have');
+    const st=$('t2status'); st.className='status';
+    if(s2>0){const n=folga(s2); horiz+=x+y;
+      $('t2sum').textContent=fmt(s2); $('t2need').textContent=fmt(n);
+      if(have>0 && have>=n){st.textContent='fio longo serve ('+fmt(have)+')'; st.classList.add('ok');
+        $('buy-t2').textContent='usa o fio longo de '+fmt(have); $('buy-t2n').textContent='0';}
+      else if(have>0){const c=commercial(n); total+=c; st.textContent='fio longo curto: falta '+fmt(n-have); st.classList.add('bad');
+        $('buy-t2').textContent='fio longo de '+fmt(have)+' não chega. Comprar cabo de '+fmt(c); $('buy-t2n').textContent='1';}
+      else {const c=commercial(n); st.textContent='informe o fio longo'; $('buy-t2').textContent='sem o fio longo: cabo de '+fmt(c); $('buy-t2n').textContent='1';}
+    } else { ['t2sum','t2need'].forEach(i=>$(i).textContent='—'); st.textContent='preencha os campos'; $('buy-t2').textContent='preencha o trecho T2'; $('buy-t2n').textContent='—'; }
+    // PTZ
+    const p=val('ptz'), ps=$('ptzstatus'); ps.className='status';
+    if(p>0){ if(p<=1.2){ps.textContent='fonte alcança';ps.classList.add('ok');$('buy-ext').textContent='não precisa';$('buy-extn').textContent='0';}
+      else {ps.textContent='precisa de extensão de '+fmt(commercial(p+0.5));ps.classList.add('bad');$('buy-ext').textContent='extensão elétrica de '+fmt(commercial(p+0.5))+' pra PTZ';$('buy-extn').textContent='1';} }
+    else { ps.textContent='—'; $('buy-ext').textContent='se a PTZ ficar longe da tomada'; $('buy-extn').textContent='—'; }
+    // canaleta e total
+    $('buy-canaleta').textContent = horiz>0 ? 'caminhos horizontais somam '+fmt(horiz)+'. Barras de 2 m: '+Math.ceil(horiz/2) : 'soma dos caminhos horizontais, opcional';
+    $('tot').textContent = total>0 ? fmt(total) : '—';
+    save();
+  }
+  load(); ids.forEach(i=>$(i).addEventListener('input',calc)); calc();
+})();
+</script>
