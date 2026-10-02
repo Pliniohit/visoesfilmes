@@ -66,7 +66,7 @@ footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
 <div class="wrap">
   <div class="eyebrow">Visões Filmes · casa · 02/10/2026</div>
   <h1>Cabos das Câmeras</h1>
-  <p class="lede">Roteador Vivo e switch PoE ficam no rack da TV, na parede do altar. As duas câmeras ficam nessa mesma parede. Os campos já vêm com as medidas da planta; ajusta se a trena disser outra coisa. Os valores ficam salvos neste navegador.</p>
+  <p class="lede">Roteador Vivo e switch PoE ficam no rack da TV, na parede do altar. Quatro câmeras: 4K na sala, 4 MP na cozinha (as duas por cabo PoE), PTZ no quarto e X5 no banheiro (Wi-Fi). Os campos já vêm com as medidas da planta; ajusta se a trena disser outra coisa.</p>
 
   <section>
     <h2>Planta</h2>
@@ -157,11 +157,11 @@ footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
       </div>
 
       <div class="panel">
-        <header><span class="tag cable">T2</span><strong>Switch → VIP 1430 B</strong><span class="tag">boca do corredor</span></header>
-        <div class="path">Sai do rack, desce pelo rodapé da parede do altar até a boca do corredor, sobe até a câmera, que fica na sala, em cima da abertura, olhando pra dentro do corredor. Nenhum cabo entra no corredor.</div>
+        <header><span class="tag cable">T2</span><strong>Switch → VIP 1430 B</strong><span class="tag">cozinha</span></header>
+        <div class="path">Sai do rack, sobe até o alto, corre pela parede da janela até a divisa com a cozinha, atravessa por um furo e chega à câmera no canto da cozinha, olhando pro portal. Alternativa sem furo: contornar pelo portal da cozinha, uns 3 m a mais.</div>
         <div class="fields">
-          <label>rack → boca do corredor (m)<input type="number" id="t2a" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="2.9"></label>
-          <label>dentro do corredor (m)<input type="number" id="t2b" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="0"></label>
+          <label>rack → subida (m)<input type="number" id="t2a" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="0.5"></label>
+          <label>parede da janela até a cozinha (m)<input type="number" id="t2b" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="2.7"></label>
           <label>subida até a câmera (m)<input type="number" id="t2c" min="0" step="0.1" inputmode="decimal" placeholder="0,0" value="1.7"></label>
           <label>fio longo que já tenho, se servir (m)<input type="number" id="t2have" min="0" step="0.5" inputmode="decimal" placeholder="0,0"></label>
         </div>
@@ -169,8 +169,8 @@ footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
       </div>
 
       <div class="panel">
-        <header><span class="tag wifi">Wi-Fi</span><strong>PTZ e Mini X5</strong></header>
-        <div class="path">Sem cabo de rede. A PTZ precisa de tomada perto do ponto (fonte 12 V 2 A, a que existe). A X5 carrega por USB e volta pro lugar.</div>
+        <header><span class="tag wifi">Wi-Fi</span><strong>PTZ no quarto · Mini X5 no banheiro</strong></header>
+        <div class="path">Sem cabo de rede. A PTZ fica no quarto e precisa de tomada perto do ponto (fonte 12 V 2 A, a que existe). A X5 fica no banheiro, longe do box, e carrega por USB.</div>
         <div class="fields">
           <label>PTZ: distância do ponto à tomada (m)<input type="number" id="ptz" min="0" step="0.1" inputmode="decimal" placeholder="0,0"></label>
         </div>
@@ -200,7 +200,7 @@ footer{margin-top:40px;font-size:.8rem;color:var(--muted)}
     </div>
   </section>
 
-  <footer>Planta: variante A de 02/10/2026, fundo da casa ainda como hipótese. Microcartão SD dispensado: gravação pelo desktop (OBS ou app próprio).</footer>
+  <footer>Planta: variante A rev. 6 de 03/10/2026, fundo da casa ainda como hipótese. Microcartão SD dispensado: gravação pelo desktop (OBS ou app próprio).</footer>
 </div>
 
 <script>
